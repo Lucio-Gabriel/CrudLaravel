@@ -18,4 +18,24 @@ class PostController extends Controller
         $post->save();
 
     }
+
+    public function read(Request $r){
+
+        $post = new Post();
+
+        // pega todos os posts que temos no banco
+        // $posts = $post->all();
+
+        // pega todos os posts que temos no banco por chave primaria - ID
+        $post = $post->find(2);
+
+        return $post;
+    }
+
+    public function all(Request $r){
+        // pega todos os posts que temos no banco
+        $posts = Post::all();
+
+        return $posts;
+    }
 }
