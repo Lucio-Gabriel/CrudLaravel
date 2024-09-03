@@ -8,14 +8,16 @@ class PostController extends Controller
 {
     public function create(Request $request){
         $new_post = [
-            'tilte' => 'Meu Primeiro Post',
-            'content' => 'Conteudo Qualquer',
-            'author' => 'Gabriel'
+            'tilte' => 'Meu terceiro Post',
+            'content' => 'Conteudo somente de teste',
+            'author' => 'Azevedo'
         ];
 
         // instanciando um model
         $post = new Post($new_post);
         $post->save();
+
+        // dd($post);
 
     }
 
@@ -37,5 +39,24 @@ class PostController extends Controller
         $posts = Post::all();
 
         return $posts;
+    }
+
+    public function update(Request $request){
+
+        // // busanco um item
+        // $post = Post::find(1);
+        // // atualizando um dado
+        // $post->tilte = 'Meu post atualizado';
+        // $post->save();
+
+        $posts = Post::where('id','>',2)->update([
+            'author' => 'Gabriel',
+            'tilte' => 'Dado Alterado'
+        ]);
+
+
+
+        return $posts;
+
     }
 }
